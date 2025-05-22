@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BTC-Chat AI | SAB Coin</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    header {
+      padding: 50px 20px 20px;
+    }
+
+    header h1 {
+      font-size: 2em;
+      margin: 0 0 10px;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 1em;
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    .buttons a {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 25px;
+      background: #ff0080;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    section {
+      background-color: #f4f4f4;
+      color: black;
+      padding: 40px 20px;
+      margin-top: 30px;
+    }
+
+    .features {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .feature-box {
+      background: white;
+      padding: 20px;
+      width: 260px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .feature-box img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 15px;
+    }
+
+    .login {
+      background-color: #eee;
+      padding: 30px;
+      border-radius: 10px;
+      margin: 20px auto;
+      max-width: 300px;
+    }
+
+    .login input {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    .login button {
+      padding: 10px 20px;
+      background: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
+    footer {
+      padding: 20px;
+      font-size: 12px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>BTC-Chat AI – powered by SAB Coin</h1>
+    <p>Analyse, Trading, KI – Alles auf einer Plattform</p>
+    <div class="buttons">
+      <a href="#sab">SAB Coin</a>
+      <a href="#charts">Live Charts</a>
+      <a href="#chat">AI Chat</a>
+      <a href="#bot">Trading Bot</a>
+      <a href="#login">Anmelden</a>
+    </div>
+  </header>
+
+  <section id="sab">
+    <h2>SAB Coin</h2>
+    <p>SAB Coin ist dein persönlicher Zugang zu unserer Community und KI.</p>
+    <p><strong>Wallet:</strong> 0x24Db1405dd43B2f60384886341dd8e47ae6a540E</p>
+    <div class="features">
+      <div class="feature-box">
+        <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png?v=029" alt="Bitcoin" />
+        <h3>Bitcoin</h3>
+        <p>Live Analyse und Kurse</p>
+      </div>
+      <div class="feature-box">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Sabcoin_logo.png" alt="SAB Coin" />
+        <h3>SAB Coin</h3>
+        <p>Zugang zur BTC-Chat KI Plattform</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="login">
+    <h2>Anmeldung</h2>
+    <div class="login">
+      <input type="text" placeholder="Benutzername" />
+      <input type="password" placeholder="Passwort" />
+      <button>Anmelden</button>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 BTC-Chat AI. Alle Rechte vorbehalten.
+  </footer>
+
+</body>
+</html>
