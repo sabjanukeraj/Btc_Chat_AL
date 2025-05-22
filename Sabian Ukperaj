@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BTC-Chat AI – SAB Coin</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #000;
+      text-align: center;
+    }
+    .info {
+      margin: 20px 0;
+    }
+    .buttons a {
+      display: block;
+      margin: 10px 0;
+      background: #000;
+      color: white;
+      text-decoration: none;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: bold;
+    }
+    .buttons a:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Willkommen bei BTC-Chat AI</h1>
+    <div class="info">
+      <p><strong>Powered by:</strong> SAB Coin</p>
+      <p><strong>Wallet:</strong> 0x24Db1405dd43B2f60384886341dd8e47ae6a540E</p>
+      <p><strong>Zugang:</strong> 200 € – Sprachen: Deutsch, Shqip, English, हिंदी</p>
+    </div>
+    <div class="buttons">
+      <a href="https://www.tiktok.com/@sab_coin" target="_blank">TikTok</a>
+      <a href="https://www.instagram.com/sab_coin" target="_blank">Instagram</a>
+      <a href="https://wa.me/4915238489426" target="_blank">WhatsApp</a>
+    </div>
+  </div>
+</body>
+</html>
