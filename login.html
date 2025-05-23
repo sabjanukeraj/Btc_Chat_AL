@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | BTC-Chat AI</title>
+  <style>
+    body {
+      background: #0f2027;
+      color: white;
+      font-family: Arial;
+      text-align: center;
+      padding-top: 100px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #ff007f;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Login BTC-Chat AI</h1>
+  <form onsubmit="return login(event)">
+    <input type="text" id="user" placeholder="Benutzername" required><br>
+    <input type="password" id="pass" placeholder="Passwort" required><br>
+    <button type="submit">Login</button>
+  </form>
+  <script>
+    const users = {
+      "sabi": "1234",
+      "alban": "pass1",
+      "elira": "qwertz",
+      "jeton": "4567",
+      "arina": "test123",
+      "driton": "btcai"
+    };
+
+    function login(e) {
+      e.preventDefault();
+      const user = document.getElementById('user').value.toLowerCase();
+      const pass = document.getElementById('pass').value;
+      if (users[user] && users[user] === pass) {
+        window.location.href = 'dashboard.html';
+      } else {
+        alert('Falsche Daten');
+      }
+    }
+  </script>
+</body>
+</html>
