@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>BTC Chat AL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://s3.tradingview.com/tv.js"></script>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background: #0e1117; color: white; }
+    .header { background: #1c1f26; padding: 20px; text-align: center; }
+    .main { padding: 30px; }
+    .box { margin-top: 30px; background: #1e1e1e; padding: 20px; border-radius: 6px; }
+    button { margin-top: 10px; background: #3dc6fd; border: none; color: white; padding: 10px 20px; cursor: pointer; }
+    input, textarea { display: block; width: 100%; padding: 10px; margin-top: 10px; border: none; border-radius: 4px; }
+    select { background: #222; color: white; margin-bottom: 20px; padding: 10px; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>BTC Chat AL – Analyse, Login, Wallet</h1>
+    <select onchange="switchLanguage(this.value)">
+      <option value="de">Deutsch 🇩🇪</option>
+      <option value="en">English 🇬🇧</option>
+      <option value="al">Shqip 🇦🇱</option>
+      <option value="it">Italiano 🇮🇹</option>
+    </select>
+  </div>
+
+  <div class="main">
+    <!-- Chart -->
+    <h2>📉 Bitcoin Live Chart</h2>
+    <div id="tv_chart_container" style="height:400px;"></div>
+    <script type="text/javascript">
+      new TradingView.widget({
+        "width": "100%",
+        "height": 400,
+        "symbol": "BITSTAMP:BTCUSD",
+        "interval": "D",
+        "timezone": "Etc/UTC",
+        "theme": "dark",
+        "style": "1",
+        "locale": "en",
+        "container_id": "tv_chart_container"
+      });
+    </script>
+
+    <!-- Registrierung -->
+    <div class="box">
+      <h2>📧 Registrierung</h2>
+      <input id="regEmail" placeholder="E-Mail">
+      <input id="regPass" type="password" placeholder="Passwort">
+      <button onclick="registerUser()">Registrieren</button>
+    </div>
+
+    <!-- Login -->
+    <div class="box">
+      <h2>🔐 Login</h2>
+      <input id="loginEmail" placeholder="E-Mail">
+      <input id="loginPass" type="password" placeholder="Passwort">
+      <button onclick="loginUser()">Einloggen</button>
+    </div>
+
+    <!-- GPT -->
+    <div class="box">
+      <h2>🧠 GPT-Analyse</h2>
+      <textarea id="gptInput" placeholder="Frage an GPT..."></textarea>
+      <button onclick="runGPT()">Antwort anzeigen</button>
+      <div id="gptOutput" style="margin-top: 15px;"></div>
+    </div>
+
+    <!-- Stripe -->
+    <div class="box">
+      <h2>💳 Bezahlung</h2>
+      <p>Jetzt BTC Chat AL freischalten – nur 9 €</p>
+      <button onclick="payNow()">Jetzt bezahlen</button>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = 'https://btc-chat-al-1.onrender.com';
+
+    async function registerUser() {
+      const res = await fetch(`${API_BASE}/api/auth/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: document.getElementById("regEmail").value,
+          password: document.getElementById("regPass").value
+        })
+      });
+      alert(res.status === 201 ? "✅ Registrierung erfolgreich!" : "❌ Fehler");
+    }
+
+    async function loginUser() {
+      const res = await fetch(`${API_BASE}/api/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: document.getElementById("loginEmail").value,
+          password: document.getElementById("loginPass").value
+        })
+      });
+      const data = await res.json();
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        alert("✅ Eingeloggt!");
+      } else {
+        alert("❌ Login fehlgeschlagen");
+      }
+    }
+
+    async function runGPT() {
+      const token = localStorage.getItem("token");
+      const prompt = document.getElementById("gptInput").value;
+      const res = await fetch(`${API_BASE}/api/gpt`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+        },
+        body: JSON.stringify({ prompt })
+      });
+      const data = await res.json();
+      document.getElementById("gptOutput").innerText = data.reply;
+    }
+
+    async function payNow() {
+      const res = await fetch(`${API_BASE}/api/checkout`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" }
+      });
+      const data = await res.json();
+      if (data.id) {
+        window.location.href = "https://checkout.stripe.com/pay/" + data.id;
+      } else {
+        alert("❌ Stripe-Fehler");
+      }
+    }
+
+    function switchLanguage(lang) {
+      const translations = {
+        de: "Frage an GPT...",
+        en: "Ask GPT something...",
+        al: "Shkruaj pyetjen për GPT...",
+        it: "Chiedi a GPT qualcosa..."
+      };
+      document.getElementById("gptInput").placeholder = translations[lang];
+    }
+  </script>
+</body>
+</html>
